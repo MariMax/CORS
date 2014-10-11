@@ -1,5 +1,5 @@
-;
-(function(angular) {
+(function(angular, console) {
+    'use strict';
     var app = angular.module('app', []);
 
     app.controller('tryCors', ['$scope', '$http', function($scope, $http) {
@@ -8,7 +8,7 @@
         }
 
         function errResult(method) {
-            console.log("Err " + method);
+            console.log('Err ' + method);
         }
 
         $scope.baseUrl = 'http://localhost:49158/api/file';
@@ -19,11 +19,11 @@
             // }, function() {
             //     errResult('Get')
             // });
-            $http.post($scope.baseUrl,{value:"Hello I'm POST method"}).then(function(res) {
-                successResult(res.data, 'post')
+            $http.post($scope.baseUrl,{value:'Hello I\'m POST method'}).then(function(res) {
+                successResult(res.data, 'post');
                 window.location.href = $scope.baseUrl+'/?fileName='+res.data.fileName;
             }, function() {
-                errResult('post')
+                errResult('post');
             });
             // $http.put($scope.baseUrl, {value:"Hello I'm PUT method"}).then(function(res) {
             //     successResult(res.data, 'put')
@@ -35,9 +35,6 @@
             // }, function() {
             //     errResult('delete')
             // });
-        }
+        };
     }]);
-
-
-
-})(angular);
+})(angular, console);
